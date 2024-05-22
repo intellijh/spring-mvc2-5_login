@@ -24,6 +24,7 @@ public class MemberRepository {
     }
 
     public Optional<Member> findByLoginId(String loginId) {
+/*
         List<Member> all = findAll();
         for (Member m : all) {
             if (m.getLoginId().equals(loginId)) {
@@ -31,12 +32,17 @@ public class MemberRepository {
             }
         }
         return Optional.empty();
-
+*/
         return findAll().stream()
-                .filter(m -> )
+                .filter(m -> m.getLoginId().equals(loginId))
+                .findFirst();
     }
 
     public List<Member> findAll() {
         return new ArrayList<>(store.values());
+    }
+
+    public void clearStore() {
+        store.clear();
     }
 }
